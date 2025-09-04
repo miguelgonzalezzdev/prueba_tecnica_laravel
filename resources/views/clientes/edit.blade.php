@@ -61,23 +61,30 @@
                     @enderror
                 </div>
                 <div class="form-group">
-                    <label for="telefono">Telefono:</label>
+                    <label for="telefono" class="@error('telefono') text-danger @enderror">Telefono:</label>
                     <input type="number"
                         class="form-control"
                         id="telefono"
                         name="telefono"
+                        max="999999999"
                         value="{{ $cliente->telefono }}"">
+                    @error('telefono')
+                    <div class="invalid-feedback">{{ $message }}</div>
+                    @enderror
                 </div>
                 <div class=" form-group">
-                    <label for="email">Email:</label>
+                    <label for="email" class="@error('email') text-danger @enderror">Email:</label>
                     <input type="email"
                         class="form-control"
                         id="email"
                         name="email"
                         value="{{ $cliente->email }}">
+                    @error('email')
+                    <div class="invalid-feedback">{{ $message }}</div>
+                    @enderror
                 </div>
                 <div class="form-group">
-                    <label for="provincia">Provincia:</label>
+                    <label for="provincia" class="@error('provincia') text-danger @enderror">Provincia:</label>
                     <select class="form-control" id="provincia" name="provincia">
                         <option value="">-- Selecciona una provincia --</option>
                         @foreach($provincias as $prov)
@@ -87,6 +94,9 @@
                         </option>
                         @endforeach
                     </select>
+                    @error('provincia')
+                    <div class="invalid-feedback">{{ $message }}</div>
+                    @enderror
                 </div>
 
             </form>

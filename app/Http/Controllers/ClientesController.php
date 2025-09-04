@@ -35,7 +35,7 @@ class ClientesController extends Controller
             'dni' => 'required|string|max:255|unique:clientes,dni',
             'nombre' => 'required|string|max:255',
             'apellidos' => 'required|string|max:255',
-            'telefono' => 'nullable|integer|max:9',
+            'telefono' => ['nullable','regex:/^\d{9,15}$/'],
             'email' => 'nullable|email|max:255',
             'provincia' => 'nullable|exists:provincias,id',
         ]);
@@ -78,7 +78,7 @@ class ClientesController extends Controller
             'dni' => 'required|string|max:255|unique:clientes,dni,' . $cliente->id,
             'nombre' => 'required|string|max:255',
             'apellidos' => 'required|string|max:255',
-            'telefono' => 'nullable|integer',
+            'telefono' => ['nullable','regex:/^\d{9,15}$/'],
             'email' => 'nullable|email|max:255',
             'provincia' => 'nullable|exists:provincias,id',
         ]);
