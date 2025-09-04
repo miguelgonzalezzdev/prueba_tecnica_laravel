@@ -15,9 +15,15 @@ class DatabaseSeeder extends Seeder
     {
         // User::factory(10)->create();
 
+        // Generar usuario de prueba
         User::factory()->create([
-            'name' => 'Test User',
-            'email' => 'test@example.com',
+            'name' => 'admin',
+            'email' => 'admin@admin.com',
+            'password' => '$2y$12$77QMPZoKfmtwJk5ZYHnAnOpXFpQklj30c7cYfwxZcMoVzy1A9PXfG',
+            'created_at' => now()
         ]);
+
+        // Generar los estados de presupuestos
+        $this->call(EstadosPresupuestosSeeder::class);
     }
 }

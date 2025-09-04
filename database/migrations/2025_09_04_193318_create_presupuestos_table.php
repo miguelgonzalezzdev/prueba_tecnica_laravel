@@ -16,7 +16,8 @@ return new class extends Migration
             $table->string('codigo')->unique();
             $table->date('fecha');
             $table->string('titulo');
-            $table->tinyInteger('estado')->unsigned()->default(0); //0=Pendiente, 1=Aceptado y 2=Denegado
+            $table->unsignedBigInteger('estado')->nullable();
+            $table->foreign('estado')->references('id')->on('estados_presupuestos')->onDelete('set null');
             $table->bigInteger('total')->nullable();
             $table->unsignedBigInteger('cliente')->nullable();
             $table->foreign('cliente')->references('id')->on('clientes')->onDelete('set null');

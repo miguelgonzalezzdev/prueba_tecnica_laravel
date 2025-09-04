@@ -6,11 +6,11 @@
 <div class="main-content">
     <section class="section">
         <div class="section-header">
-            <h1>Editar Cliente</h1>
+            <h1>Editar Presupuesto</h1>
         </div>
         <div class="section-body">
             <!-- Formulario de edición -->
-            <form action="{{ route('clientes.update', $cliente->id) }}" method="POST">
+            <form action="{{ route('presupuestos.update', $cliente->id) }}" method="POST">
                 @csrf
                 @method('PUT')
                 <div class="d-flex mt-4 mb-4 align-items-center">

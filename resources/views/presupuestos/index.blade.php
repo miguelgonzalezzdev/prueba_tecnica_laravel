@@ -15,7 +15,7 @@
 
         <div class="section-body">
             <a href="{{ route('presupuestos.create') }}" class="btn btn-primary mb-4">
-                <i class="fas fa-plus mr-2"></i> Nuevo Cliente
+                <i class="fas fa-plus mr-2"></i> Nuevo Presupuesto
             </a>
             <div class="table-responsive">
                 <table class="table table-striped">

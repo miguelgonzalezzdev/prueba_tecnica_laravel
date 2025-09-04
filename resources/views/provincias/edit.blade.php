@@ -24,8 +24,11 @@
                     </button>
                 </div>
                 <div class="form-group">
-                    <label for="nombre">Nombre:</label>
+                    <label for="nombre" class="@error('nombre') text-danger @enderror">Nombre:</label>
                     <input type="text" class="form-control" id="nombre" name="nombre" value="{{ $provincia->nombre }}" required>
+                    @error('nombre')
+                    <div class="invalid-feedback">{{ $message }}</div>
+                    @enderror
                 </div>
             </form>
             <form id="deleteForm" action="{{ route('provincias.destroy', $provincia->id) }}" method="POST" style="display:none;">

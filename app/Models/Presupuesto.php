@@ -24,4 +24,10 @@ class Presupuesto extends Model
     {
         return $this->belongsTo(Cliente::class, 'cliente', 'id'); 
     }
+
+    // Relacion: un presupuesto puede tener un estado
+    public function estadoRelacion()
+    {
+        return $this->belongsTo(EstadosPresupuesto::class, 'estado', 'id');
+    }
 }
