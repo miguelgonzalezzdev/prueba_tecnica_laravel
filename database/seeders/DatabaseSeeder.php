@@ -2,6 +2,8 @@
 
 namespace Database\Seeders;
 
+use App\Models\Cliente;
+use App\Models\Presupuesto;
 use App\Models\User;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
@@ -13,8 +15,6 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        // User::factory(10)->create();
-
         // Generar usuario de prueba
         User::factory()->create([
             'name' => 'admin',
@@ -28,5 +28,13 @@ class DatabaseSeeder extends Seeder
 
         // Generar las provincias
         $this->call(ProvinciasSeeder::class);
+
+        Cliente::factory()->count(10)->create();
+
+        for ($i = 1; $i <= 10; $i++) {
+            Presupuesto::factory()->state([
+                'codigo' => 'P' . str_pad($i, 4, '0', STR_PAD_LEFT)
+            ])->create();
+        }
     }
 }
