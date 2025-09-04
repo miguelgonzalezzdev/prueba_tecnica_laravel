@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\ProvinciasController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -18,8 +19,9 @@ Route::middleware(['auth'])->group(function () {
     Route::put('/profile/password', [ProfileController::class, 'password'])->name('profile.password');
     Route::get('/blank-page', [App\Http\Controllers\HomeController::class, 'blank'])->name('blank');
 
-    //Provincias
-    //Route::get('/provincias', [App\Http\Controllers\HomeController::class, 'provincias'])->name('provincias');
+    // PROVINCIAS
+    Route::get('/provincias', [ProvinciasController::class, 'index'])->name('provincias');
+    Route::post('/provincias', [ProvinciasController::class, 'store'])->name('provincias.store');
 
     Route::get('/hakakses', [App\Http\Controllers\HakaksesController::class, 'index'])->name('hakakses.index')->middleware('superadmin');
     Route::get('/hakakses/edit/{id}', [App\Http\Controllers\HakaksesController::class, 'edit'])->name('hakakses.edit')->middleware('superadmin');
