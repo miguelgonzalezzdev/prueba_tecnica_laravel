@@ -70,8 +70,8 @@ git clone https://github.com/miguelgonzalezzdev/prueba_tecnica_laravel.git
 
 Al ejecutar`php artisan migrate --seed`, se generará automáticamente un usuario de pruebas:
 
-Usuario: **admin@admin.com**
-Contraseña: **admin1234**
+Usuario: **admin@admin.com**  
+Contraseña: **admin1234**  
 
 La plataforma incluirá datos de prueba para provincias, clientes y presupuestos.
 
