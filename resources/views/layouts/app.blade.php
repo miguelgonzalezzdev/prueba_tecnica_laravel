@@ -7,7 +7,7 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <!-- Title -->
-    <title>@yield('title') &mdash; Laravel - Stisla</title>
+    <title>@yield('title') &mdash; Prueba Técnica</title>
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
