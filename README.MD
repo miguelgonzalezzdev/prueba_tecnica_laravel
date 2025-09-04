@@ -7,7 +7,7 @@
 - CRUD de Presupuestos
 - Command para los presupuestos pendientes
 - Seeders y Factories para generar datos de prueba automáticamente
-- Tests basicos para los CRUDs
+- Tests básicos para los CRUDs
 
 ## Guía de instalación
 
@@ -31,7 +31,7 @@ git clone https://github.com/miguelgonzalezzdev/prueba_tecnica_laravel.git
     cd prueba_tecnica_laravel
     ```
 
-3. Instala las dependecias de PHP:
+3. Instala las dependencias de PHP:
 
     ```bash
     composer install
@@ -43,7 +43,7 @@ git clone https://github.com/miguelgonzalezzdev/prueba_tecnica_laravel.git
     npm run dev
     ```
 
-5. Copia el archivo `.env.example` y renombralo como `.env`:
+5. Copia el archivo `.env.example` y renómbralo como `.env`:
     ```bash
     copy .env.example .env  # Windows
     cp .env.example .env    # Linux/Mac
