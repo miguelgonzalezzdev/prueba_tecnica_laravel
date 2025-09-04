@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('dni')->unique();
             $table->string('nombre');
             $table->string('apellidos');
-            $table->integer('telefono')->nullable();
+            $table->bigInteger('telefono')->nullable();
             $table->string('email')->nullable();
             $table->unsignedBigInteger('provincia')->nullable();
             $table->foreign('provincia')->references('id')->on('provincias');

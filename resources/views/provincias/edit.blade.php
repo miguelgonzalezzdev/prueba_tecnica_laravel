@@ -9,18 +9,16 @@
             <h1>Editar Provincia</h1>
         </div>
         <div class="section-body">
-            <!-- Formulario de edición -->
             <form action="{{ route('provincias.update', $provincia->id) }}" method="POST">
                 @csrf
                 @method('PUT')
                 <div class="d-flex mt-4 mb-4 align-items-center">
-                    <!-- Botón Guardar con icono -->
                     <button type="submit" class="btn btn-primary mr-2">
                         <i class="fas fa-save mr-1"></i> Guardar
                     </button>
-                    <a href="{{ route('provincias') }}" class="btn btn-secondary mr-2">
+                    <a href="{{ route('provincias.index') }}" class="btn btn-secondary mr-2">
                         <i class="fas fa-arrow-left mr-1"></i> Volver
-                    </a>
+                    </a> 
                     <button type="button" class="btn btn-danger" onclick="if(confirm('¿Estás seguro de eliminar esta provincia?')) document.getElementById('deleteForm').submit();">
                         <i class="fas fa-trash-alt mr-1"></i> Eliminar
                     </button>

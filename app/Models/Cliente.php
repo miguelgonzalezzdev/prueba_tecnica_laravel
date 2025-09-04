@@ -20,9 +20,9 @@ class Cliente extends Model
     ];
 
     // Relación: un usuario pertenece a una provincia
-    public function provincia()
+    public function provinciaRelacion()
     {
-        return $this->belongsTo(Provincia::class);
+        return $this->belongsTo(Provincia::class, 'provincia');
     }
 }
 

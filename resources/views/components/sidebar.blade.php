@@ -2,10 +2,10 @@
 <div class="main-sidebar sidebar-style-2">
     <aside id="sidebar-wrapper">
         <div class="sidebar-brand">
-        <a href="">STISLA</a>
+        <a href="">Prueba Técnica</a>
         </div>
         <div class="sidebar-brand sidebar-brand-sm">
-        <a href="">STISLA</a>
+        <a href="">Prueba</a>
         </div>
         <ul class="sidebar-menu">
             <li class="menu-header">Dashboard</li>
@@ -29,6 +29,9 @@
             <li class="menu-header">Base de datos</li>
             <li class="{{ Request::is('blank-page') ? 'active' : '' }}">
                 <a class="nav-link" href="{{ url('provincias') }}"><i class="fas fa-city"></i><span>Provincias</span></a>
+            </li>
+            <li class="{{ Request::is('blank-page') ? 'active' : '' }}">
+                <a class="nav-link" href="{{ url('clientes') }}"><i class="fas fa-users"></i><span>Clientes</span></a>
             </li>
             <li class="menu-header">Starter</li>
             <li class="{{ Request::is('blank-page') ? 'active' : '' }}">
