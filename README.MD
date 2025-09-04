@@ -1,23 +1,93 @@
-# laravel 12 with Stisla Template
+# Prueba Técnica Laravel
 
-Welcome to the repository for laravel 12 integrated with Stisla Bootstrap 5 template!
+## Funcionalidades desarrolladas
 
-## Overview
-This repository contains a laravel 12 template that comes pre-configured with authentication from Breeze and utilizes the Stisla Bootstrap 5 template for the UI. It includes various features to help you quickly set up a robust web application.
+- CRUD de Provincias 
+- CRUD de Cliente
+- CRUD de Presupuestos
+- Command para los presupuestos pendientes
+- Seeders y Factories para generar datos de prueba automáticamente
+- Tests basicos para los CRUDs
 
-## Features
-- laravel 12
-- Stisla Bootstrap 5 Template
-- Authentication with Laravel Breeze
-- User Profile Management
-- Responsive Design
-- Pre-configured Dashboard
-- Example Pages (Register, Login, Dashboard, Blank Page, Edit User Profile)
+## Guía de instalación
 
-## Installation Guide
-
-### Prerequisites
+### Requisitos
 - PHP >= 8.2
 - Composer
 - Node.js
 - npm
+
+### Pasos para la instalación
+
+1. Clona e repositorio:
+
+```bash
+git clone https://github.com/miguelgonzalezzdev/prueba_tecnica_laravel.git
+```
+
+2. Accede al directorio del proyecto:
+
+    ```bash
+    cd laravel11-stisla
+    ```
+
+3. Instala las dependecias de PHP:
+
+    ```bash
+    composer install
+    ```
+
+4. Instala las dependencias de JavaScript y compila los assets:
+    ```bash
+    npm install && npm run dev
+    ```
+
+5. Generar la key de la aplicación:
+    ```bash
+    php artisan key:generate
+    ```
+
+6. Ejecuta migraciones y seeders para crear la base de datos y los datos de prueba:
+    ```bash
+    php artisan migrate --seed
+    ```
+
+7. Levanta el servidor local de desarrollo:
+    ```bash
+    php artisan serve
+    ```
+
+## Inicio rápido
+
+Al ejecutar`php artisan migrate --seed`, se generará automáticamente un usuario de pruebas:
+
+Usuario: **admin@admin.com**
+Contraseña: **admin1234**
+
+La plataforma incluirá datos de prueba para provincias, clientes y presupuestos.
+
+Command: Denegar presupuestos pendientes
+
+Para ejecutar el comando:
+
+```bash
+php artisan presupuestos:denegar-pendiente
+```
+
+El comando buscará todos los presupuestos con fecha anterior a la actual y cuyo estado sea 'Pendiente'. Cambiará su estado a Denegado y enviará un correo al cliente asociado, además de mostrar en consola información de los presupuestos afectados.
+
+## Tests
+
+Se incluyen tests básicos para comprobar el correcto funcionamiento de los CRUD.
+
+Para ejecutar los tests:
+
+```bash
+php artisan test
+```
+
+*Nota: Después de ejecutar los tests, es necesario volver a generar los datos de prueba:*
+
+```bash
+php artisan migrate:fresh --seed
+```
