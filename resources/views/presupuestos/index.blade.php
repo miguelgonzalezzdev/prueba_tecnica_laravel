@@ -30,9 +30,18 @@
                     </thead>
                     <tbody>
                         @foreach($presupuestos as $presupuesto)
-                        <tr class="pointer" style="cursor:pointer;" onclick="window.location='{{ route("presupuestos.edit", $cliente->id) }}'">
+                        <tr class="pointer" style="cursor:pointer;" onclick="window.location='{{ route("presupuestos.edit", $presupuesto->id) }}'">
                             <td>{{ $loop->iteration }}</td>
-                            <td>{{ $presupuesto->Codigo }}</td>
+                            <td>{{ $presupuesto->codigo }}</td>
+                            <td>
+                                {{ $presupuesto->clienteRelacion ? $presupuesto->clienteRelacion->nombre . ' ' . $presupuesto->clienteRelacion->apellidos : ' ' }}
+                            </td>
+                            <td>
+                                {{ $presupuesto->clienteRelacion && $presupuesto->clienteRelacion->provinciaRelacion
+                                    ? $presupuesto->clienteRelacion->provinciaRelacion->nombre
+                                    : ' '
+                                }}
+                            </td>
                             <td>{{ $presupuesto->total }}</td>
                         </tr>
                         @endforeach

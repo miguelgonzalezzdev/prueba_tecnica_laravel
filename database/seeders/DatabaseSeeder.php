@@ -25,5 +25,8 @@ class DatabaseSeeder extends Seeder
 
         // Generar los estados de presupuestos
         $this->call(EstadosPresupuestosSeeder::class);
+
+        // Generar las provincias
+        $this->call(ProvinciasSeeder::class);
     }
 }

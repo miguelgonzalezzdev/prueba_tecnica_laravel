@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Editar Provincia')
+@section('title', 'Editar Cliente')
 
 @section('content')
 <div class="main-content">
@@ -9,7 +9,6 @@
             <h1>Editar Cliente</h1>
         </div>
         <div class="section-body">
-            <!-- Formulario de edición -->
             <form action="{{ route('clientes.update', $cliente->id) }}" method="POST">
                 @csrf
                 @method('PUT')

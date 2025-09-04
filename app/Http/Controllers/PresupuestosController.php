@@ -6,6 +6,7 @@ use App\Models\Cliente;
 use App\Models\EstadosPresupuesto;
 use App\Models\Presupuesto;
 use Illuminate\Http\Request;
+use Illuminate\Validation\Rule;
 
 class PresupuestosController extends Controller
 {
@@ -48,7 +49,30 @@ class PresupuestosController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'codigo' => [
+                'required',
+                'string',
+                Rule::unique('presupuestos', 'codigo')
+                    ->whereNull('deleted_at'), // Ignora los registros soft deleted
+            ],
+            'fecha' => 'required|date',
+            'titulo' => 'required|string|max:255',
+            'estado' => 'nullable|exists:estados_presupuestos,id',
+            'total' => 'nullable|numeric|min:0',
+            'cliente' => 'nullable|exists:clientes,id',
+        ]);
+
+        Presupuesto::create([
+            'codigo' => $request->codigo,
+            'fecha' => $request->fecha,
+            'titulo' => $request->titulo,
+            'estado' => $request->estado,
+            'total' => $request->total,
+            'cliente' => $request->cliente,
+        ]);
+
+        return redirect()->route('presupuestos.index')->with('success', 'Presupuesto creado correctamente.');
     }
 
     /**
@@ -62,24 +86,54 @@ class PresupuestosController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(Presupuesto $presupuesto)
     {
-        //
+        $clientes = Cliente::orderBy('nombre', 'asc')->orderBy('apellidos', 'asc')->get();
+
+        $estados = EstadosPresupuesto::all();
+
+        return view('presupuestos.edit', compact('presupuesto', 'clientes', 'estados'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, Presupuesto $presupuesto)
     {
-        //
+        $request->validate([
+            'codigo' => [
+                'required',
+                'string',
+                Rule::unique('presupuestos', 'codigo')
+                    ->ignore($presupuesto->id) // No tener en cuenta el propio codigo
+                    ->whereNull('deleted_at'), // Ignora los soft deleted
+            ],
+            'fecha' => 'required|date',
+            'titulo' => 'required|string|max:255',
+            'estado' => 'nullable|exists:estados_presupuestos,id',
+            'total' => 'nullable|numeric|min:0',
+            'cliente' => 'nullable|exists:clientes,id',
+        ]);
+
+        $presupuesto->update([
+            'codigo' => $request->codigo,
+            'fecha' => $request->fecha,
+            'titulo' => $request->titulo,
+            'estado' => $request->estado,
+            'total' => $request->total,
+            'cliente' => $request->cliente,
+        ]);
+
+        return redirect()->route('presupuestos.index')->with('success', 'Presupuesto creado correctamente.');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Presupuesto $presupuesto)
     {
-        //
+        $presupuesto->delete();
+
+        return redirect()->route('presupuestos.index')->with('success', 'Presupuesto eliminado correctamente.');
     }
 }

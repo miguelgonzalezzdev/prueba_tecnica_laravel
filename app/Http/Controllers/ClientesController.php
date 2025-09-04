@@ -35,7 +35,7 @@ class ClientesController extends Controller
             'dni' => 'required|string|max:255|unique:clientes,dni',
             'nombre' => 'required|string|max:255',
             'apellidos' => 'required|string|max:255',
-            'telefono' => ['nullable','regex:/^\d{9,15}$/'],
+            'telefono' => ['nullable','regex:/^\d{0,15}$/'],
             'email' => 'nullable|email|max:255',
             'provincia' => 'nullable|exists:provincias,id',
         ]);
@@ -78,7 +78,7 @@ class ClientesController extends Controller
             'dni' => 'required|string|max:255|unique:clientes,dni,' . $cliente->id,
             'nombre' => 'required|string|max:255',
             'apellidos' => 'required|string|max:255',
-            'telefono' => ['nullable','regex:/^\d{9,15}$/'],
+            'telefono' => ['nullable','regex:/^\d{0,15}$/'],
             'email' => 'nullable|email|max:255',
             'provincia' => 'nullable|exists:provincias,id',
         ]);
@@ -103,6 +103,6 @@ class ClientesController extends Controller
     {
         $cliente->delete();
 
-        return redirect()->route('clientes.index')->with('success', 'Provincia eliminada correctamente.');
+        return redirect()->route('clientes.index')->with('success', 'Cliente eliminado correctamente.');
     }
 }

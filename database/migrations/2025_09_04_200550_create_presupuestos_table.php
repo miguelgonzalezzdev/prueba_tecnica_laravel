@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('presupuestos', function (Blueprint $table) {
             $table->id();
-            $table->string('codigo')->unique();
+            $table->string('codigo');
             $table->date('fecha');
             $table->string('titulo');
             $table->unsignedBigInteger('estado')->nullable();
