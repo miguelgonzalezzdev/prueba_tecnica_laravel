@@ -3,6 +3,7 @@
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ProvinciasController;
 use App\Http\Controllers\ClientesController;
+use App\Http\Controllers\PresupuestosController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -25,6 +26,9 @@ Route::middleware(['auth'])->group(function () {
 
     // CLIENTES
     Route::resource('clientes', ClientesController::class);
+
+    // PRESUPUESTOS
+    Route::resource('presupuestos', PresupuestosController::class);
 
     Route::get('/hakakses', [App\Http\Controllers\HakaksesController::class, 'index'])->name('hakakses.index')->middleware('superadmin');
     Route::get('/hakakses/edit/{id}', [App\Http\Controllers\HakaksesController::class, 'edit'])->name('hakakses.edit')->middleware('superadmin');

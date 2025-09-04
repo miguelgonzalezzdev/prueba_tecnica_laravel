@@ -19,10 +19,16 @@ class Cliente extends Model
         'provincia',
     ];
 
-    // Relación: un usuario pertenece a una provincia
+    // Relacion: un usuario pertenece a una provincia
     public function provinciaRelacion()
     {
         return $this->belongsTo(Provincia::class, 'provincia');
+    }
+
+    //Relacin: un cliente puede tener muchos presupuestos
+    public function presupuestos()
+    {
+        return $this->hasMany(Presupuesto::class, 'cliente', 'id');
     }
 }
 
