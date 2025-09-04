@@ -6,18 +6,23 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Provincia extends Model
+class Cliente extends Model
 {
-
     use HasFactory, SoftDeletes;
 
     protected $fillable = [
+        'dni',
         'nombre',
+        'apellidos',
+        'telefono',
+        'email',
+        'provincia',
     ];
 
-    // Relacion: una provincia tiene muchos usuarios
-    public function users()
+    // Relación: un usuario pertenece a una provincia
+    public function provincia()
     {
-        return $this->hasMany(User::class);
+        return $this->belongsTo(Provincia::class);
     }
 }
+
