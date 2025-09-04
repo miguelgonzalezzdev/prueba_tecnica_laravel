@@ -75,7 +75,7 @@ Contraseña: **admin1234**
 
 La plataforma incluirá datos de prueba para provincias, clientes y presupuestos.
 
-Command: Denegar presupuestos pendientes
+## Command: Denegar presupuestos pendientes
 
 Para ejecutar el comando:
 
