@@ -14,24 +14,22 @@
         </div>
 
         <div class="section-body">
-            <button type="button" class="btn btn-primary mb-3" data-toggle="modal" data-target="#provinciaModal">
-                Agregar Provincia
-            </button>
+            <a href="{{ route('provincias.create') }}" class="btn btn-primary mb-4">
+                <i class="fas fa-plus mr-2"></i> Agregar Provincia
+            </a>
             <div class="table-responsive">
                 <table class="table table-striped">
                     <thead>
                         <tr>
                             <th>#</th>
                             <th>Nombre</th>
-                            <th>Acciones</th>
                         </tr>
                     </thead>
                     <tbody>
                         @foreach($provincias as $provincia)
-                        <tr>
+                        <tr class="pointer" style="cursor:pointer;" onclick="window.location='{{ route("provincias.edit", $provincia->id) }}'">
                             <td>{{ $loop->iteration }}</td>
                             <td>{{ $provincia->nombre }}</td>
-                            <td></td>
                         </tr>
                         @endforeach
                     </tbody>

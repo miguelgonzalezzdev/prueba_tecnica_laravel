@@ -21,7 +21,12 @@ Route::middleware(['auth'])->group(function () {
 
     // PROVINCIAS
     Route::get('/provincias', [ProvinciasController::class, 'index'])->name('provincias');
+    Route::get('/provincias/create', [ProvinciasController::class, 'create'])->name('provincias.create');
     Route::post('/provincias', [ProvinciasController::class, 'store'])->name('provincias.store');
+    Route::get('/provincias/{provincia}/edit', [ProvinciasController::class, 'edit'])->name('provincias.edit');
+    Route::put('/provincias/{provincia}', [ProvinciasController::class, 'update'])->name('provincias.update');
+    Route::delete('/provincias/{provincia}', [ProvinciasController::class, 'destroy'])->name('provincias.destroy');
+
 
     Route::get('/hakakses', [App\Http\Controllers\HakaksesController::class, 'index'])->name('hakakses.index')->middleware('superadmin');
     Route::get('/hakakses/edit/{id}', [App\Http\Controllers\HakaksesController::class, 'edit'])->name('hakakses.edit')->middleware('superadmin');
